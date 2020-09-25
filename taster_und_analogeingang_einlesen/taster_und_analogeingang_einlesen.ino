@@ -9,6 +9,19 @@ void setup() {
     pinMode(i, OUTPUT);
   for(int i = 2; i < 7; i++)
     pinMode(i, OUTPUT);
+  Serial.begin(115200);
+}
+
+int time() {
+  int input = analogRead(0);
+  int time = input / 2;
+  return time;
+}
+
+void show(){
+  Serial.println();
+  Serial.println(time());
+  delay(200);
 }
 
 void lauflichtEins(){
@@ -70,6 +83,7 @@ void lauflichtDrei(){
 }
 
 void loop() {
+  show();
   if(digitalRead(tasterEins) == HIGH)
     lauflichtEins();
   else if(digitalRead(tasterZwei) == HIGH)
